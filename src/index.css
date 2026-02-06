@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: 'nb-thin';
+  src: url('./Fonts/nb-international-pro-light.otf');
+}
