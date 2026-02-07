@@ -41,10 +41,19 @@ export default function Navbar() {
   return (
     <>
       {/* HERO SECTION */}
-      <section
-        className="h-screen bg-cover bg-center relative"
-        style={{ backgroundImage: "url('/home1.jpg')" }}
-      >
+      <section className="h-screen relative overflow-hidden">
+
+        {/* VIDEO BACKGROUND */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/home.mp4" type="video/mp4" />
+        </video>
+
         <div className="absolute inset-0 bg-black/25"></div>
 
         {/* NAVBAR */}
@@ -95,7 +104,7 @@ export default function Navbar() {
 
         {/* DESKTOP HERO */}
         <div className="hidden md:block absolute left-12 bottom-32 text-white" style={{ fontFamily: "nb-thin" }}>
-          <h1 className="text-5xl mb-6">QAHUA</h1>
+          <h1 className="text-5xl mb-6">QAHUA CULTR</h1>
           <p className="text-sm max-w-xs">
           Rooted in India’s rich coffee heritage, we work with estates and farmer communities across the country to share authentic, traceable coffees with the world.
           </p>
@@ -103,7 +112,7 @@ export default function Navbar() {
 
         {/* MOBILE HERO */}
         <div className="md:hidden absolute left-0 right-0 bottom-24 flex flex-col items-center text-white text-center px-6" style={{ fontFamily: "nb-thin" }}>
-          <h1 className="text-5xl mb-4">QAHUA</h1>
+          <h1 className="text-5xl mb-4">QAHUA CULTR</h1>
           <p className="text-sm max-w-[260px] mb-6">
             Connecting the World to India’s Finest Coffees
           </p>

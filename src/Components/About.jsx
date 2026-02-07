@@ -7,11 +7,11 @@ export default function SubscriptionSection() {
         >
   
           {/* RIGHT IMAGE (Shows first on mobile) */}
-          <div className="order-1 md:order-2 flex justify-center md:justify-end md:-mr-[3vw]">
+          <div className="order-1 md:order-2 flex justify-center md:justify-end md:-mr-[3.35vw]">
             <img
-              src="/coffee.jpg"
+              src="/coffee2.jpeg"
               alt="Subscription Coffee"
-              className="w-full max-w-[550px] object-cover"
+              className="w-full max-w-[700px] object-cover"
             />
           </div>
   
