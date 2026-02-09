@@ -5,6 +5,10 @@ import Navbar from './Components/Nav';
 import Lenis from 'lenis';
 import Coffees from './Components/Coffees'
 import About from './Components/About'
+import CoffeeJourney from './Components/CoffeeJourney';
+import Chikmagalur from './Pages/Chikmagalur'
+import Wayanad from './Pages/Wayanad'
+import Coorg from './Pages/Coorg'
 
 function Home() {
   return (
@@ -12,6 +16,7 @@ function Home() {
       <Navbar />
       <Coffees />
       <About />
+      <CoffeeJourney />
     </div>
   );
 }
@@ -42,6 +47,9 @@ function App() {
       <Routes>
         {/* 🏠 Home route */}
         <Route path="/" element={<Home />} />
+        <Route path="/chikmagalur" element={<Chikmagalur />} />
+        <Route path="/coorg" element={<Coorg />} />
+        <Route path="/wayanad" element={<Wayanad />} />
       </Routes>
     </Router>
   );

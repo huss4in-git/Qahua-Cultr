@@ -6,11 +6,14 @@ export default function Navbar() {
   const [solidNav, setSolidNav] = useState(false);
   const [navVisible, setNavVisible] = useState(true);
   const [activeMenu, setActiveMenu] = useState("main");
+  const [hoveredNav, setHoveredNav] = useState(null);
 
   const shopItems = [
-    "Filter Coffee",
-    "Espresso",
-    "Equipment"
+    "Available Coffees",
+    "Seasonal Lots",
+    "Find Your Coffee",
+    "Wholesale & Sourcing",
+    "Partner With Us",
   ];
 
   useEffect(() => {
@@ -19,11 +22,7 @@ export default function Navbar() {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
 
-      if (currentScroll > window.innerHeight * 0.85) {
-        setSolidNav(true);
-      } else {
-        setSolidNav(false);
-      }
+      setSolidNav(currentScroll > window.innerHeight * 0.85);
 
       if (currentScroll > lastScroll && currentScroll > 100) {
         setNavVisible(false);
@@ -38,12 +37,22 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!shopOpen) {
+      setHoveredNav(null);
+    }
+  }, [shopOpen]);
+
+  const dimOthers = (item) => {
+    if (!hoveredNav) return false;
+    return hoveredNav !== item;
+  };
+
   return (
     <>
       {/* HERO SECTION */}
       <section className="h-screen relative overflow-hidden">
 
-        {/* VIDEO BACKGROUND */}
         <video
           autoPlay
           loop
@@ -77,11 +86,49 @@ export default function Navbar() {
             </div>
 
             {/* DESKTOP LEFT */}
-            <div className="hidden md:flex space-x-8 uppercase">
-              <span onClick={() => setShopOpen(true)}>Shop</span>
-              <span>Our Coffees</span>
-              <span>Partner Farms</span>
-              <span>Transparency</span>
+            <div
+              className={`hidden md:flex space-x-8 uppercase ${
+                shopOpen ? "text-black" : ""
+              }`}
+            >
+
+              {/* EXPLORE */}
+              <button
+                onMouseEnter={() => setHoveredNav("explore")}
+                onMouseLeave={() => setHoveredNav(null)}
+                onClick={() => {
+                  setShopOpen(true);
+                  setHoveredNav("explore");
+                }}
+                className={`transition-opacity duration-500 ${
+                  dimOthers("explore") ? "opacity-40" : "opacity-100"
+                }`}
+              >
+                EXPLORE
+              </button>
+
+              {/* PARTNER FARMS */}
+              <span
+                onMouseEnter={() => setHoveredNav("partner")}
+                onMouseLeave={() => setHoveredNav(null)}
+                className={`transition-opacity duration-500 ${
+                  dimOthers("partner") ? "opacity-40" : "opacity-100"
+                }`}
+              >
+                Partner Farms
+              </span>
+
+              {/* TRANSPARENCY */}
+              <span
+                onMouseEnter={() => setHoveredNav("transparency")}
+                onMouseLeave={() => setHoveredNav(null)}
+                className={`transition-opacity duration-500 ${
+                  dimOthers("transparency") ? "opacity-40" : "opacity-100"
+                }`}
+              >
+                Transparency
+              </span>
+
             </div>
 
             {/* LOGO */}
@@ -102,11 +149,11 @@ export default function Navbar() {
           </div>
         </nav>
 
-        {/* DESKTOP HERO */}
-        <div className="hidden md:block absolute left-12 bottom-32 text-white" style={{ fontFamily: "nb-thin" }}>
+        {/* HERO TEXT */}
+        <div className="hidden md:block absolute left-12 bottom-32 text-white" style={{fontFamily:'nb-thin'}}>
           <h1 className="text-5xl mb-6">QAHUA CULTR</h1>
           <p className="text-sm max-w-xs">
-          Rooted in India’s rich coffee heritage, we work with estates and farmer communities across the country to share authentic, traceable coffees with the world.
+            Rooted in India’s rich coffee heritage, we work with estates and farmer communities across the country to share authentic, traceable coffees with the world.
           </p>
         </div>
 
@@ -124,16 +171,79 @@ export default function Navbar() {
         <button className="hidden md:block absolute right-12 bottom-28 bg-white text-black px-8 py-3 text-[13px]">
           Explore Our Coffees
         </button>
+
       </section>
+
+      {/* DRAWER BACKDROP */}
+      {shopOpen && (
+        <div
+          onClick={() => setShopOpen(false)}
+          className="fixed inset-0 bg-black/30 z-40"
+        />
+      )}
+
+     {/* EXPLORE DRAWER */}
+<div
+  onMouseEnter={() => setHoveredNav("explore")}
+  onMouseLeave={() => setHoveredNav(null)}
+  className={`fixed top-0 left-0 h-full w-[370px] bg-[#faf6ed] z-50 transform transition-transform duration-500 ${
+    shopOpen ? "translate-x-0" : "-translate-x-full"
+  }`}
+>
+
+  <div className="flex flex-col h-full">
+
+    {/* MENU ITEMS */}
+    <div className="p-10 space-y-3 mt-20 text-[23px]" >
+      {shopItems.map((item, i) => (
+        <p key={i} className="cursor-pointer hover:opacity-60 transition">
+          {item}
+        </p>
+      ))}
+    </div>
+
+    {/* GET INSPIRED SECTION */}
+    <div className="mt-auto p-8" style={{fontFamily:'nb-thin'}}>
+
+      <p className="text-[11px] uppercase mb-4 tracking-wide">
+        Get Inspired
+      </p>
+
+      <div className="grid grid-cols-2 gap-4">
+
+        <div>
+          <img
+            src="/cf1.jpg"
+            className="w-full h-[200px] object-cover"
+          />
+          {/* <p className="text-xs mt-2">
+            Job opportunity | Part-time baristas
+          </p> */}
+        </div>
+
+        <div>
+          <img
+            src="/coffee1.jpeg"
+            className="w-full h-[200px] object-fit"
+          />
+          {/* <p className="text-xs mt-2">
+            Roasting Course
+          </p> */}
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
 
       {/* MOBILE MENU DRAWER */}
       <div
         className={`fixed inset-0 bg-[#f6f1e9] z-[1000] transform transition-transform duration-500 ${
           mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
-        style={{ fontFamily: "nb-thin" }}
       >
-        {/* HEADER */}
         <div className="flex items-center justify-between px-6 h-16 border-b border-black/10">
 
           <span
@@ -153,29 +263,20 @@ export default function Navbar() {
           <span className="text-sm">Contact</span>
         </div>
 
-        {/* SLIDE CONTAINER */}
         <div className="relative overflow-hidden h-full">
-
           <div
             className={`flex w-[200%] transition-transform duration-500 ${
               activeMenu === "shop" ? "-translate-x-1/2" : "translate-x-0"
             }`}
           >
-
-            {/* MAIN MENU */}
+            
             <div className="w-1/2 px-6 pt-12">
               <div className="space-y-4 text-[24px]">
-
-                <div
+              <div
                   onClick={() => setActiveMenu("shop")}
                   className="flex justify-between cursor-pointer"
                 >
-                  <span>Shop</span>
-                  <span>→</span>
-                </div>
-
-                <div className="flex justify-between">
-                  <span>Our coffees</span>
+                  <span>Explore</span>
                   <span>→</span>
                 </div>
 
@@ -190,16 +291,18 @@ export default function Navbar() {
                 </div>
 
                 <div className="flex justify-between">
-                  <span>About us</span>
+                  <span>Blog</span>
                   <span>→</span>
                 </div>
 
+                <div className="flex justify-between">
+                  <span>About us</span>
+                  <span>→</span>
+                </div>
               </div>
             </div>
 
-            {/* SHOP SUBMENU */}
             <div className="w-1/2 px-6 pt-12">
-
               <div className="space-y-4 text-[24px]">
                 {shopItems.map((item, i) => (
                   <p key={i} className="cursor-pointer">
@@ -207,42 +310,9 @@ export default function Navbar() {
                   </p>
                 ))}
               </div>
-
-              {/* INSPIRED */}
-              <div className="mt-10">
-                <p className="text-xs uppercase mb-4">Get Inspired</p>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <img src="/insp1.jpg" className="w-full h-[130px] object-cover" />
-                  <img src="/insp2.jpg" className="w-full h-[130px] object-cover" />
-                </div>
-
-                <div className="mt-3 text-sm">
-                  <p>Job opportunity | Part-time baristas</p>
-                  <p>Roasting Course</p>
-                </div>
-              </div>
-
             </div>
 
           </div>
-        </div>
-      </div>
-
-      {/* DESKTOP SHOP DRAWER */}
-      {shopOpen && (
-        <div onClick={() => setShopOpen(false)} className="fixed inset-0 bg-black/30 z-40" />
-      )}
-
-      <div
-        className={`fixed top-0 left-0 h-full w-[450px] bg-[#f6f1e9] z-50 transform transition-transform duration-500 ${
-          shopOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <div className="p-10 space-y-3 mt-20 text-[23px]">
-          {shopItems.map((item, i) => (
-            <p key={i}>{item}</p>
-          ))}
         </div>
       </div>
     </>
