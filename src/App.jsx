@@ -9,6 +9,8 @@ import CoffeeJourney from './Components/CoffeeJourney';
 import Chikmagalur from './Pages/Chikmagalur'
 import Wayanad from './Pages/Wayanad'
 import Coorg from './Pages/Coorg'
+import Farms from './Components/Farms'
+import Footer from './Components/Footer'
 
 function Home() {
   return (
@@ -17,6 +19,8 @@ function Home() {
       <Coffees />
       <About />
       <CoffeeJourney />
+      <Farms />
+      <Footer />
     </div>
   );
 }

@@ -13,3 +13,8 @@ html {
   font-family: 'nb-regular';
   src: url('./Fonts/nb-international-pro-regular.otf');
 }
+
+@font-face {
+  font-family: 'inter';
+  src: url('./Fonts/inter_n4.b2a3f24c19b4de56e8871f609e73ca7f6d2e2bb9.woff2');
+}

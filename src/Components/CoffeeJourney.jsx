@@ -25,20 +25,19 @@ export default function CoffeeJourney() {
     return (
       <section className="bg-[#faf6ed] px-1 md:px-1 py-20">
   
-      <div className="w-full px-6 xl:px-12 2xl:px-24">
+      <div className="w-full px-6 xl:px-10 2xl:px-24">
   
           <div className="grid md:grid-cols-2 gap-12 items-start">
   
             {/* LEFT TITLE */}
             <div>
-              <h1 className="text-3xl md:text-5xl" style={{color:'#4c4341'}}>
+              <h1 className="text-3xl md:text-5xl " style={{color:'#4c4341'}}>
                 Coffee Journey
               </h1>
             </div>
   
             {/* RIGHT CONTENT */}
             <div style={{ fontFamily: "nb-thin" }}>
-  
               <p className="text-[15px] text-black/70 leading-relaxed max-w-[520px] mb-8">
                 From seed to cup, every coffee passes through a careful journey.
                 We work closely with estates and farmer communities across India
