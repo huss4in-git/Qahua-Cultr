@@ -10,9 +10,9 @@ export default function SubscriptionSection() {
           {/* PHOTO */}
           <div className="order-1 md:order-2 relative w-full h-[50vh] md:h-screen">
             <img
-              src="/cf3.jpg"
+              src="/cj.jpg"
               alt="Subscription Coffee"
-              className="absolute inset-0 w-full h-full object-fit"
+              className="absolute inset-0 w-full h-full md:object-cover object-cover"
             />
           </div>
   

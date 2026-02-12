@@ -76,7 +76,7 @@ export default function Navbar() {
           }`}
           style={{ fontFamily: "nb-thin" }}
         >
-          <div className="flex items-center justify-between max-w-[1600px] mx-auto px-6 md:px-10 h-16">
+<div className="flex items-center justify-between w-full px-6 md:px-12 h-16">
 
             {/* MOBILE LEFT */}
             <div className="md:hidden uppercase">

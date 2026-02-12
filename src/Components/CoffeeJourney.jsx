@@ -23,9 +23,9 @@ export default function CoffeeJourney() {
     ];
   
     return (
-      <section className="bg-[#faf6ed] px-6 md:px-12 py-20">
+      <section className="bg-[#faf6ed] px-1 md:px-1 py-20">
   
-        <div className="max-w-[1400px] mx-auto">
+      <div className="w-full px-6 xl:px-12 2xl:px-24">
   
           <div className="grid md:grid-cols-2 gap-12 items-start">
   
