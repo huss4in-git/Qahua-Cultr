@@ -44,7 +44,7 @@ export default function CoffeeJourney() {
                 to deliver transparent, traceable coffees.
               </p>
   
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
   
                 {steps.map((step, index) => (
                   <div key={index} className="text-center">

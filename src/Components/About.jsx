@@ -10,7 +10,7 @@ export default function SubscriptionSection() {
         {/* PHOTO */}
         <div className="order-1 md:order-2 relative w-full h-[50vh] md:h-screen">
           <img
-            src="/cj.jpg"
+            src="/cf6.jpg"
             alt="Subscription Coffee"
             className="absolute inset-0 w-full h-full md:object-cover object-cover"
           />
@@ -20,47 +20,38 @@ export default function SubscriptionSection() {
         <div className="order-2 md:order-1 flex flex-col justify-center px-6 md:px-12 py-16">
 
           <h2 className="text-3xl md:text-4xl mb-8 ">
-            What you get with Qahua Cultr
+            What we do
           </h2>
 
           <ul className="space-y-3 text-sm opacity-90">
 
             <li className="flex items-start gap-3">
-              <div className="flex justify-between items-center" >
-                <div className="w-4 h-4 border-l-[14px] border-l-[#4c4341] border-t-[16px] border-t-transparent rotate-180" />
-              </div>
-              A curated selection of coffees
+              <div className="mt-[4px] border-l-[10px] border-l-[#4c4341] border-t-[12px] border-t-transparent rotate-180" />
+              We source high-quality coffee directly from trusted farms.
             </li>
 
             <li className="flex items-start gap-3">
-              <div className="flex justify-between items-center" >
-                <div className="w-4 h-4 border-l-[14px] border-l-[#4c4341] border-t-[16px] border-t-transparent rotate-180" />
-              </div>
-              Exclusive access to micro-lots and special roasts
+              <div className="mt-[4px] border-l-[10px] border-l-[#4c4341] border-t-[12px] border-t-transparent rotate-180" />
+              We manage global exports and seamless logistics from farm to cup.
             </li>
 
             <li className="flex items-start gap-3">
-              <div className="flex justify-between items-center" >
-                <div className="w-4 h-4 border-l-[14px] border-l-[#4c4341] border-t-[16px] border-t-transparent rotate-180" />
-              </div>
-              Free shipping worldwide
+              <div className="mt-[4px] border-l-[10px] border-l-[#4c4341] border-t-[12px] border-t-transparent rotate-180" />
+              We refine post-harvest processes to elevate quality.
             </li>
 
             <li className="flex items-start gap-3">
-              <div className="flex justify-between items-center" >
-                <div className="w-4 h-4 border-l-[14px] border-l-[#4c4341] border-t-[16px] border-t-transparent rotate-180" />
-              </div>
-              Discounts and benefits
+              <div className="mt-[4px] border-l-[10px] border-l-[#4c4341] border-t-[12px] border-t-transparent rotate-180" />
+              We prioritise long-term value over short-term gain.
             </li>
 
-            {/* <li className="flex items-start gap-3">
-              <div className="flex justify-between items-center" >
-                <div className="w-4 h-4 border-l-[14px] border-l-[#4c4341] border-t-[16px] border-t-transparent rotate-180" />
-              </div>
-              Flexibility to pause or cancel anytime
-            </li> */}
+            <li className="flex items-start gap-3">
+              <div className="mt-[4px] border-l-[10px] border-l-[#4c4341] border-t-[12px] border-t-transparent rotate-180" />
+              Through Qahua Cultr, we advance climate-resilient coffee research.
+            </li>
 
           </ul>
+
 
           <button className="mt-10 border border-white px-8 py-3 text-sm hover:bg-white hover:text-black transition w-fit">
             CONTACT NOW

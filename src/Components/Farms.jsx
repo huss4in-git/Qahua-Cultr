@@ -11,7 +11,7 @@ export default function SelectedCoffees() {
       },
       {
         name: "Wayanad",
-        img: "/farm2.webp",
+        img: "/Wayanad.avif",
         link: "/chikmagalur",
         p: "From the historic hills of Chikmagalur, the birthplace of Indian coffee, these beans showcase a smooth body, rich aroma, and refined cocoa-spice notes. Naturally shade-grown and carefully handpicked for exceptional quality."
       },
@@ -46,7 +46,7 @@ export default function SelectedCoffees() {
             {/* Clickable Name */}
             <Link
               to={coffee.link}
-              className="block mt-3 md:mt-4 text-sm md:text-base underline hover:opacity-70 transition"
+              className="block mt-3 md:mt-4 text-sm md:text-base  hover:opacity-70 transition no-underline"
             >
               {coffee.name}
             </Link>
