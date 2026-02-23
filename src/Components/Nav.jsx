@@ -343,7 +343,7 @@ export default function Navbar() {
               </div>
 
               {/* GET INSPIRED SECTION */}
-              <div className="mt-45">
+              <div className="mt-30">
 
                 <p className="text-[11px] uppercase mb-4 tracking-wide">
                   Get Inspired
