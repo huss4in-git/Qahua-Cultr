@@ -210,29 +210,123 @@ export default function Navbar() {
       </div>
 
       {/* MOBILE MENU DRAWER */}
-      <div
-        className={`fixed inset-0 bg-[#f6f1e9] z-[1000] transform transition-transform duration-500 ${
-          mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <div className="flex items-center justify-between px-6 h-16 border-b border-black/10">
-          <span
-            onClick={() => {
-              if (activeMenu === "shop") setActiveMenu("main");
-              else setMobileMenuOpen(false);
-            }}
-            className="text-sm cursor-pointer"
+<div
+  className={`fixed inset-0 bg-[#f6f1e9] z-[1000] transform transition-transform duration-500 ${
+    mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+  }`}
+  style={{ fontFamily: "nb-thin" }}
+>
+  <div className="flex items-center justify-between px-6 h-16 border-b border-black/10">
+    <span
+      onClick={() => {
+        if (activeMenu === "shop") setActiveMenu("main");
+        else setMobileMenuOpen(false);
+      }}
+      className="text-[12px] cursor-pointer"
+    >
+      {activeMenu === "shop" ? "← SHOP" : "CLOSE"}
+    </span>
+
+    <span
+      onClick={() => {
+        setMobileMenuOpen(false);
+        navigate("/");
+      }}
+      className="tracking-widest text-lg cursor-pointer"
+    >
+      QAHUA CULTR
+    </span>
+
+    <span className="text-[12px]">CONTACT</span>
+  </div>
+
+  <div className="relative overflow-hidden h-full">
+    <div
+      className={`flex w-[200%] transition-transform duration-500 ${
+        activeMenu === "shop" ? "-translate-x-1/2" : "translate-x-0"
+      }`}
+    >
+      {/* MAIN MENU */}
+      <div className="w-1/2 px-6 pt-12">
+        <div className="space-y-2 text-[24px]">
+
+          <div
+            onClick={() => setActiveMenu("shop")}
+            className="flex justify-between cursor-pointer"
           >
-            {activeMenu === "shop" ? "← Shop" : "Close"}
-          </span>
+            <span>Explore</span>
+            <span>→</span>
+          </div>
 
-          <span className="tracking-widest text-lg">
-            QAHUA CULTR
-          </span>
+          <div className="flex justify-between">
+            <span>Partner farms</span>
+            <span>→</span>
+          </div>
 
-          <span className="text-sm">Contact</span>
+          <div className="flex justify-between">
+            <span>Blog</span>
+            <span>→</span>
+          </div>
+
+          <div
+            onClick={() => {
+              setMobileMenuOpen(false);
+              setTimeout(() => {
+                navigate("/about");
+              }, 300);
+            }}
+            className="flex justify-between cursor-pointer"
+          >
+            <span>About us</span>
+            <span>→</span>
+          </div>
+
         </div>
       </div>
+
+      <div className="w-1/2 px-6 pt-12 flex flex-col h-full">
+
+              {/* SHOP ITEMS */}
+              <div className="space-y-2 text-[24px]">
+                {shopItems.map((item, i) => (
+                  <p key={i} className="cursor-pointer">
+                    {item}
+                  </p>
+                ))}
+              </div>
+
+              {/* GET INSPIRED SECTION */}
+              <div className="mt-45">
+
+                <p className="text-[11px] uppercase mb-4 tracking-wide">
+                  Get Inspired
+                </p>
+
+                <div className="grid grid-cols-2 gap-3">
+
+                  <div>
+                    <img
+                      src="/cf1.jpg"
+                      className="w-full h-[180px] object-cover"
+                    />
+                  </div>
+
+                  <div>
+                    <img
+                      src="/coffee1.jpeg"
+                      className="w-full h-[180px] object-cover"
+                    />
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+    </div>
+  </div>
+</div>
 
       <CoffeeTrail />
       <Footer />
