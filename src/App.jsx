@@ -11,7 +11,7 @@ import Wayanad from './Pages/Wayanad'
 import Coorg from './Pages/Coorg'
 import Farms from './Components/Farms'
 import Footer from './Components/Footer'
-import Aboutus from './Pages/Aboutus';
+import AboutUs from './Pages/AboutUs'
 
 function Home() {
   return (
@@ -56,7 +56,7 @@ function App() {
         <Route path="/chikmagalur" element={<Chikmagalur />} />
         <Route path="/coorg" element={<Coorg />} />
         <Route path="/wayanad" element={<Wayanad />} />
-        <Route path="/about" element={<Aboutus />} />
+        <Route path="/about" element={<AboutUs />} />
       </Routes>
     </Router>
   );
