@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [shopOpen, setShopOpen] = useState(false);
@@ -48,6 +49,8 @@ export default function Navbar() {
     return hoveredNav !== item;
   };
 
+  const navigate = useNavigate();
+
   return (
     <>
       {/* HERO SECTION */}
@@ -67,16 +70,14 @@ export default function Navbar() {
 
         {/* NAVBAR */}
         <nav
-          className={`fixed top-0 left-0 w-full z-[999] text-[12px] transition-all duration-500 transform ${
-            navVisible ? "translate-y-0" : "-translate-y-full"
-          } ${
-            solidNav
+          className={`fixed top-0 left-0 w-full z-[999] text-[12px] transition-all duration-500 transform ${navVisible ? "translate-y-0" : "-translate-y-full"
+            } ${solidNav
               ? "bg-[#faf6ed] text-black"
               : "bg-transparent text-white"
-          }`}
+            }`}
           style={{ fontFamily: "nb-thin" }}
         >
-<div className="flex items-center justify-between w-full px-6 md:px-12 h-16">
+          <div className="flex items-center justify-between w-full px-6 md:px-12 h-16">
 
             {/* MOBILE LEFT */}
             <div className="md:hidden uppercase">
@@ -87,9 +88,8 @@ export default function Navbar() {
 
             {/* DESKTOP LEFT */}
             <div
-              className={`hidden md:flex space-x-8 uppercase ${
-                shopOpen ? "text-black" : ""
-              }`}
+              className={`hidden md:flex space-x-8 uppercase ${shopOpen ? "text-black" : ""
+                }`}
             >
 
               {/* EXPLORE */}
@@ -100,9 +100,8 @@ export default function Navbar() {
                   setShopOpen(true);
                   setHoveredNav("explore");
                 }}
-                className={`transition-opacity duration-500 ${
-                  dimOthers("explore") ? "opacity-40" : "opacity-100"
-                }`}
+                className={`transition-opacity duration-500 ${dimOthers("explore") ? "opacity-40" : "opacity-100"
+                  }`}
               >
                 EXPLORE
               </button>
@@ -111,9 +110,8 @@ export default function Navbar() {
               <span
                 onMouseEnter={() => setHoveredNav("partner")}
                 onMouseLeave={() => setHoveredNav(null)}
-                className={`transition-opacity duration-500 ${
-                  dimOthers("partner") ? "opacity-40" : "opacity-100"
-                }`}
+                className={`transition-opacity duration-500 ${dimOthers("partner") ? "opacity-40" : "opacity-100"
+                  }`}
               >
                 Partner Farms
               </span>
@@ -122,9 +120,8 @@ export default function Navbar() {
               <span
                 onMouseEnter={() => setHoveredNav("transparency")}
                 onMouseLeave={() => setHoveredNav(null)}
-                className={`transition-opacity duration-500 ${
-                  dimOthers("transparency") ? "opacity-40" : "opacity-100"
-                }`}
+                className={`transition-opacity duration-500 ${dimOthers("transparency") ? "opacity-40" : "opacity-100"
+                  }`}
               >
                 Transparency
               </span>
@@ -132,16 +129,43 @@ export default function Navbar() {
             </div>
 
             {/* LOGO */}
-            <div className="absolute left-1/2 -translate-x-1/2 text-lg tracking-widest">
+            <div
+              onClick={() => {
+                setMobileMenuOpen(false);
+                setShopOpen(false);
+
+                // optional small animation trigger can go here
+
+                setTimeout(() => {
+                  navigate("/");
+                }, 1200); // 1.2 seconds delay
+              }}
+              className="absolute left-1/2 -translate-x-1/2 text-lg tracking-widest cursor-pointer"
+            >
               QAHUA CULTR
             </div>
+
 
             {/* MOBILE RIGHT */}
             <div className="md:hidden uppercase">Contact</div>
 
             {/* DESKTOP RIGHT */}
             <div className="hidden md:flex space-x-8 uppercase">
-              <span>About Us</span>
+              <span
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setShopOpen(false);
+
+                  setTimeout(() => {
+                    navigate("/about");
+                  }, 700); // 0.7 seconds
+                }}
+                className="cursor-pointer"
+              >
+                About Us
+              </span>
+
+
               <span>Blog</span>
               <span>Contact</span>
             </div>
@@ -150,7 +174,7 @@ export default function Navbar() {
         </nav>
 
         {/* HERO TEXT */}
-        <div className="hidden md:block absolute left-12 bottom-32 text-white" style={{fontFamily:'nb-thin'}}>
+        <div className="hidden md:block absolute left-12 bottom-32 text-white" style={{ fontFamily: 'nb-thin' }}>
           <h1 className="text-5xl mb-6">QAHUA CULTR</h1>
           <p className="text-sm max-w-xs">
             Rooted in India’s rich coffee heritage, we work with estates and farmer communities across the country to share authentic, traceable coffees with the world.
@@ -182,67 +206,65 @@ export default function Navbar() {
         />
       )}
 
-     {/* EXPLORE DRAWER */}
-<div
-  onMouseEnter={() => setHoveredNav("explore")}
-  onMouseLeave={() => setHoveredNav(null)}
-  className={`fixed top-0 left-0 h-full w-[370px] bg-[#faf6ed] z-50 transform transition-transform duration-500 ${
-    shopOpen ? "translate-x-0" : "-translate-x-full"
-  }`}
->
+      {/* EXPLORE DRAWER */}
+      <div
+        onMouseEnter={() => setHoveredNav("explore")}
+        onMouseLeave={() => setHoveredNav(null)}
+        className={`fixed top-0 left-0 h-full w-[370px] bg-[#faf6ed] z-50 transform transition-transform duration-500 ${shopOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+      >
 
-  <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full">
 
-    {/* MENU ITEMS */}
-    <div className="p-10 space-y-3 mt-20 text-[23px]" >
-      {shopItems.map((item, i) => (
-        <p key={i} className="cursor-pointer hover:opacity-60 transition">
-          {item}
-        </p>
-      ))}
-    </div>
+          {/* MENU ITEMS */}
+          <div className="p-10 space-y-3 mt-20 text-[23px]" >
+            {shopItems.map((item, i) => (
+              <p key={i} className="cursor-pointer hover:opacity-60 transition">
+                {item}
+              </p>
+            ))}
+          </div>
 
-    {/* GET INSPIRED SECTION */}
-    <div className="mt-auto p-8" style={{fontFamily:'nb-thin'}}>
+          {/* GET INSPIRED SECTION */}
+          <div className="mt-auto p-8" style={{ fontFamily: 'nb-thin' }}>
 
-      <p className="text-[11px] uppercase mb-4 tracking-wide">
-        Get Inspired
-      </p>
+            <p className="text-[11px] uppercase mb-4 tracking-wide">
+              Get Inspired
+            </p>
 
-      <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4">
 
-        <div>
-          <img
-            src="/cf1.jpg"
-            className="w-full h-[200px] object-cover"
-          />
-          {/* <p className="text-xs mt-2">
+              <div>
+                <img
+                  src="/cf1.jpg"
+                  className="w-full h-[200px] object-cover"
+                />
+                {/* <p className="text-xs mt-2">
             Job opportunity | Part-time baristas
           </p> */}
-        </div>
+              </div>
 
-        <div>
-          <img
-            src="/coffee1.jpeg"
-            className="w-full h-[200px] object-fit"
-          />
-          {/* <p className="text-xs mt-2">
+              <div>
+                <img
+                  src="/coffee1.jpeg"
+                  className="w-full h-[200px] object-fit"
+                />
+                {/* <p className="text-xs mt-2">
             Roasting Course
           </p> */}
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
-
       </div>
-
-    </div>
-
-  </div>
-</div>
 
       {/* MOBILE MENU DRAWER */}
       <div
-        className={`fixed inset-0 bg-[#f6f1e9] z-[1000] transform transition-transform duration-500 ${
-          mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed inset-0 bg-[#f6f1e9] z-[1000] transform transition-transform duration-500 ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         <div className="flex items-center justify-between px-6 h-16 border-b border-black/10">
 
@@ -265,14 +287,13 @@ export default function Navbar() {
 
         <div className="relative overflow-hidden h-full">
           <div
-            className={`flex w-[200%] transition-transform duration-500 ${
-              activeMenu === "shop" ? "-translate-x-1/2" : "translate-x-0"
-            }`}
+            className={`flex w-[200%] transition-transform duration-500 ${activeMenu === "shop" ? "-translate-x-1/2" : "translate-x-0"
+              }`}
           >
-            
+
             <div className="w-1/2 px-6 pt-12">
               <div className="space-y-4 text-[24px]">
-              <div
+                <div
                   onClick={() => setActiveMenu("shop")}
                   className="flex justify-between cursor-pointer"
                 >
