@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Footer from "../Components/Footer";
 import { useNavigate } from "react-router-dom";
-import CoffeeTrail from "../Components/CoffeeTrail";
+import ContactFormSection from "../Components/Contactform";
 
 export default function Navbar() {
     const [shopOpen, setShopOpen] = useState(false);
@@ -55,38 +55,14 @@ export default function Navbar() {
 
     return (
         <>
-            {/* HERO SECTION */}
-            <section className="h-screen flex flex-col md:flex-row">
-
-                {/* IMAGE (Top on mobile, Right on desktop) */}
-                <div className="w-full md:w-1/2 h-1/2 md:h-full relative md:order-2">
-                    <img
-                        src="/cf1.jpg"
-                        alt="Our Story"
-                        className="w-full h-full object-cover"
-                    />
-                </div>
-
-                {/* TEXT (Bottom on mobile, Left on desktop) */}
-                <div className="w-full md:w-1/2 h-1/2 md:h-full bg-[#1b1b1b] flex items-center justify-center md:justify-start md:order-1">
-                    <div
-                        className="px-6 md:px-12"
-                        style={{ fontFamily: "nb-thin" }}
-                    >
-                        <h1 className="text-[28px] md:text-[50px] text-[#faf6ed]  text-center md:text-left">
-                            Our Story
-                        </h1>
-                    </div>
-                </div>
-
-            </section>
+            
 
             {/* NAVBAR */}
             <nav
                 className={`fixed top-0 left-0 w-full z-[999] text-[12px] transition-all duration-500 transform ${navVisible ? "translate-y-0" : "-translate-y-full"
                     } ${solidNav
                         ? "bg-[#faf6ed] text-black"
-                        : "bg-transparent text-white"
+                        : "bg-transparent text-black"
                     }`}
                 style={{ fontFamily: "nb-thin" }}
             >
@@ -135,7 +111,7 @@ export default function Navbar() {
                             className={`transition-opacity duration-500 ${dimOthers("transparency") ? "opacity-40" : "opacity-100"
                                 }`}
                         >
-                            Our Coffees
+                            Transparency
                         </span>
                     </div>
 
@@ -155,11 +131,7 @@ export default function Navbar() {
                     </div>
 
                     {/* MOBILE RIGHT */}
-                    <div onClick={() => {
-                        setTimeout(() => {
-                            navigate("/contact");
-                          }, 700); // 0.7 seconds
-                    }} className="cursor-pointer md:hidden uppercase">Contact</div>
+                    <div className="md:hidden uppercase">Contact</div>
 
                     {/* DESKTOP RIGHT */}
                     <div className="hidden md:flex space-x-8 uppercase">
@@ -325,8 +297,8 @@ export default function Navbar() {
                 </div>
             </div>
 
-            <CoffeeTrail />
-            <Footer />
+            <ContactFormSection/>
+            <Footer/>
 
         </>
     );

@@ -33,7 +33,7 @@ export default function Footer() {
             <li>Our Origins</li>
             <li>Farms</li>
             <li>Contact us</li>
-            <li>Transparency</li>
+            
           </ul>
         </div>
 
@@ -57,7 +57,6 @@ export default function Footer() {
           <h4 className="mb-6">Customer Support</h4>
           <ul className="space-y-3 text-sm">
             <li>Contact us</li>
-            <li>Account</li>
             <li>Terms & conditions</li>
             <li>Privacy Policy</li>
           </ul>
@@ -77,7 +76,7 @@ export default function Footer() {
                 <li>Our Origins</li>
                 <li>Farms</li>
                 <li>Contact us</li>
-                <li>Transparency</li>
+                
               </ul>
             )
           },
@@ -107,7 +106,6 @@ export default function Footer() {
             content: (
               <ul className="grid grid-cols-2 gap-y-2 mt-4 text-[13px]">
                 <li>Contact us</li>
-                <li>Account</li>
                 <li>Terms & conditions</li>
                 <li>Privacy Policy</li>
               </ul>

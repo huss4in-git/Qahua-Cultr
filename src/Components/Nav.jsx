@@ -100,7 +100,7 @@ export default function Navbar() {
                   setShopOpen(true);
                   setHoveredNav("explore");
                 }}
-                className={`transition-opacity duration-500 ${dimOthers("explore") ? "opacity-40" : "opacity-100"
+                className={`cursor-pointer transition-opacity duration-500 ${dimOthers("explore") ? "opacity-40" : "opacity-100"
                   }`}
               >
                 EXPLORE
@@ -110,7 +110,7 @@ export default function Navbar() {
               <span
                 onMouseEnter={() => setHoveredNav("partner")}
                 onMouseLeave={() => setHoveredNav(null)}
-                className={`transition-opacity duration-500 ${dimOthers("partner") ? "opacity-40" : "opacity-100"
+                className={`cursor-pointer transition-opacity duration-500 ${dimOthers("partner") ? "opacity-40" : "opacity-100"
                   }`}
               >
                 Partner Farms
@@ -120,10 +120,10 @@ export default function Navbar() {
               <span
                 onMouseEnter={() => setHoveredNav("transparency")}
                 onMouseLeave={() => setHoveredNav(null)}
-                className={`transition-opacity duration-500 ${dimOthers("transparency") ? "opacity-40" : "opacity-100"
+                className={`cursor-pointer transition-opacity duration-500 ${dimOthers("transparency") ? "opacity-40" : "opacity-100"
                   }`}
               >
-                Transparency
+                Our Coffees
               </span>
 
             </div>
@@ -147,7 +147,11 @@ export default function Navbar() {
 
 
             {/* MOBILE RIGHT */}
-            <div className="md:hidden uppercase">Contact</div>
+            <div onClick={() => {
+              setTimeout(() => {
+                navigate("/contact");
+              }, 700); // 0.7 seconds
+            }} className="cursor-pointer md:hidden uppercase">Contact</div>
 
             {/* DESKTOP RIGHT */}
             <div className="hidden md:flex space-x-8 uppercase">
@@ -166,8 +170,20 @@ export default function Navbar() {
               </span>
 
 
-              <span>Blog</span>
-              <span>Contact</span>
+              <span className="cursor-pointer">Blog</span>
+              <span
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setShopOpen(false);
+
+                  setTimeout(() => {
+                    navigate("/contact");
+                  }, 500);
+                }}
+                className="cursor-pointer"
+              >
+                Contact
+              </span>
             </div>
 
           </div>
@@ -265,7 +281,7 @@ export default function Navbar() {
       <div
         className={`fixed inset-0 bg-[#f6f1e9] z-[1000] transform transition-transform duration-500 ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
           }`}
-          style={{ fontFamily: "nb-thin" }}
+        style={{ fontFamily: "nb-thin" }}
       >
         <div className="flex items-center justify-between px-6 h-16 border-b border-black/10">
 

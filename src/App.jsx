@@ -12,6 +12,7 @@ import Coorg from './Pages/Coorg'
 import Farms from './Components/Farms'
 import Footer from './Components/Footer'
 import AboutUs from './Pages/AboutUs'
+import Contact from './Pages/Contact'
 
 function Home() {
   return (
@@ -22,7 +23,6 @@ function Home() {
       <CoffeeJourney />
       <Farms />
       <Footer />
-      
     </div>
   );
 }
@@ -57,6 +57,7 @@ function App() {
         <Route path="/coorg" element={<Coorg />} />
         <Route path="/wayanad" element={<Wayanad />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
   );
